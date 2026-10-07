@@ -1,6 +1,6 @@
 #pragma once
 #include <functional>
-#include <string>
+#include <iostream>
 
 using Activation = std::function<double(double)>;
 
@@ -9,3 +9,8 @@ double sigmoid(double z);
 double tanhAct(double z);
 
 Activation withClip(Activation inner, double lo, double hi);
+Activation withScale(Activation inner, double k);
+Activation withShift(Activation inner, double c);
+Activation withNoise(Activation inner, double sigma, unsigned seed);
+Activation withCounter(Activation inner, int& calls);
+Activation withLogging(Activation inner, std::ostream& os);
